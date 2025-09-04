@@ -1,0 +1,19 @@
+{
+    "version": "1.0",
+    "title": "320x320 Banner1",
+    "description": "Birger Bostad Banner 320x320 Banner1 with exclusive preview splash animation",
+    "width": "320",
+    "height": "320",
+    "events": {
+        "enabled": 1,
+        "list": {
+            "1": "bannerImpression",
+            "2": "bannerClick",
+            "3": "bannerExit"
+        }
+    },
+    "clicktags": {
+        "clickTAG": "https://www.birgerbostad.se"
+    },
+    "source": "banner.html"
+} 

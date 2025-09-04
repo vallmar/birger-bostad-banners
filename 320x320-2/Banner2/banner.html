@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Banner 320x320 Banner1 </title>  <link rel="preconnect" href="https://fonts.googleapis.com">
+    <title>Banner 320x320 Banner2 </title>  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap" rel="stylesheet">
     
@@ -35,7 +35,7 @@
             top: 0;
             left: 0;
         }
-        
+
         .jpg-overlay {
             position: absolute;
             z-index: 1;
@@ -46,17 +46,27 @@
         .splash {
             position: absolute;
             top: 0px;
-            left: 62px;
-            width: 190px;
+            left: 50%;
+            transform: translate(-50%, 0);
+            width: 130px;
             z-index: 2;
-            /* optional cleanup */
-            /* remove unused vars/animations */
+        }
+
+        @keyframes splashHalfCircle {
+            0% {
+                transform: scale(0);
+                filter: blur(6px);
+            }
+            100% {
+                transform: scale(1);
+                filter: blur(0);
+            }
         }
 
         @keyframes overlayFade {
             to { opacity: 0; }
         }
-        
+
         .cta {
             position: absolute;
             cursor: pointer;
@@ -68,33 +78,7 @@
             z-index: 2;
         }
         
-        /* Light sweep re-trigger */
-.cta::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent);
-    animation: lightSweep 7.5s ease-out;
-    animation-delay: 4s; /* sync with first time we reach second view */
-    animation-iteration-count: onetime;
-    animation-play-state: running;
-}
-
-/* We control timing by matching animation duration to slideViews */
-@keyframes lightSweep {
-    0% {
-        left: -100%;
-    }
-    20% {
-        left: 100%;
-    }
-    100% {
-        left: 100%;
-    }
-}
+        /* Removed light sweep effect entirely */
         
         .cta:hover {
             transform: scale(1.05);
@@ -104,14 +88,16 @@
             width: auto;
             height: auto;
         }
-        
-        @keyframes ctaLightSweep {
-            0% { opacity: 0; }
-            100% { opacity: 1; }
-        }
-        
 
-     
+        .views-container {
+            width: 200%;
+            height: 100%;
+            display: flex;
+            position: absolute;
+            top: 0;
+            left: 0;
+            animation: slideViews 10s ease-in-out infinite;
+        }
 
         .view {
             width: 50%;
@@ -121,90 +107,73 @@
         }
 
         @keyframes slideViews {
-    0% {
-        transform: translateX(0);
-    }
-    25% { /* pause on first view */
-        transform: translateX(0);
-    }
-    35% { /* slide to second */
-        transform: translateX(-50%);
-    }
-    60% { /* pause on second view */
-        transform: translateX(-50%);
-    }
-    70% { /* slide back to first */
-        transform: translateX(0);
-    }
-    100% {
-        transform: translateX(0);
-    }
-}
-
-.views-container {
-    width: 200%;
-    height: 100%;
-    display: flex;
-    position: absolute;
-    top: 0;
-    left: 0;
-    animation: slideViews 10s ease-in-out infinite;
-}
+             0% {
+                transform: translateX(0);
+            }
+            25% { /* pause on first view */
+                transform: translateX(0);
+            }
+            35% { /* slide to second */
+                transform: translateX(-50%);
+            }
+            60% { /* pause on second view */
+                transform: translateX(-50%);
+            }
+            70% { /* slide back to first */
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(0);
+            }
+        }
     </style>
 </head>
 <body>
     <div class="banner" id="banner">
         <div class="views-container">
             <div class="view">
-                <img src="Banner-320x320-1A.svg" alt="View 1 Background" style="width: 100%; height: 100%; object-fit: cover;">
+                <img src="Banner-Omg2-Bakgrund-320x320-A.svg" alt="View 1 Background" style="width: 100%; height: 100%; object-fit: cover;">
                 <div class="jpg-overlay">
-                    <img src="Banner-320x320-1A.jpg" alt="Banner Overlay" style="width: 280px; height: auto;">
+                    <img src="Banner-320x320-2.jpg" alt="Banner Overlay" style="width: 280px; height: auto;">
                 </div>
             </div>
             <div class="view">
-                <img src="Banner-320x320-1B.svg" alt="View 2 Background" style="width: 100%; height: 100%; object-fit: cover;">
-                <!-- replace container with direct SVG image -->
-                <img class="splash" src="SPLASH.svg" alt="Exclusive Preview" />
+                <img src="Banner-Omg2-Bakgrund-320x320-B.svg" alt="View 2 Background" style="width: 100%; height: 100%; object-fit: cover;">
+                <div class="splash">
+                    <img src="Splash-Banner2.svg" alt="Exclusive Preview" style="display:block; width:100%; height:auto;">
+                </div>
                 <div class="cta">
-                    <img src="CTA-BANNER-320x320-1.svg" alt="Call to Action">
+                    <img src="CTA-BANNER-320x320-2.svg" alt="Call to Action">
                 </div>
             </div>
         </div>
     </div>
 
     <script>
-        // Adform compliance script
         (function() {
             'use strict';
             
             var banner = document.getElementById('banner');
             var clickTracked = false;
             
-            // Get clickTAG value using Adform DHTML library
             var clickTAGvalue = dhtml.getVar('clickTAG', 'https://www.birgerbostad.se');
              
             
-            // Click tracking function
             function trackClick() {
                 if (clickTracked) return;
                 clickTracked = true;
                 
                 try {
-                    // Adform click tracking
                     if (typeof window.adform !== 'undefined' && window.adform.track) {
                         window.adform.track();
                     }
-                    
-                    // Use clickTAG value for landing page
                     window.open(clickTAGvalue, '_blank');
                 } catch (e) {
  
-                    // Fallback to clickTAG value
                     window.open(clickTAGvalue, '_blank');
                 }
             }
             
-            // Exit tracking function
             function trackExit() {
                 try {
                     if (typeof window.adform !== 'undefined' && window.adform.trackExit) {
@@ -215,14 +184,11 @@
                 }
             }
             
-            // Event listeners
             banner.addEventListener('click', trackClick);
-            
-            
-            // Fallback for non-JavaScript environments
+            banner.addEventListener('mouseleave', trackExit);
+            banner.addEventListener('touchend', trackClick);
             banner.style.cursor = 'pointer';
             
-            // Animation completion tracking
             setTimeout(function() {
                 try {
                     if (typeof window.adform !== 'undefined' && window.adform.trackImpression) {
@@ -231,9 +197,34 @@
                 } catch (e) {
                       
                 }
-            }, 3500); // After all animations complete (0.5s + 1.2s + 2s + buffer)
-            
+            }, 3500);
         })();
+ 
+            function trackExit() {
+                try {
+                    if (typeof window.adform !== 'undefined' && window.adform.trackExit) {
+                        window.adform.trackExit();
+                    }
+                } catch (e) {
+                     
+                }
+            }
+            
+            banner.addEventListener('click', trackClick);
+            banner.addEventListener('mouseleave', trackExit);
+            banner.addEventListener('touchend', trackClick);
+            banner.style.cursor = 'pointer';
+            
+            setTimeout(function() {
+                try {
+                    if (typeof window.adform !== 'undefined' && window.adform.trackImpression) {
+                        window.adform.trackImpression();
+                    }
+                } catch (e) {
+                      
+                }
+            }, 3500);
+     
     </script>
 </body>
 </html>

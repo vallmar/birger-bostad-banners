@@ -46,11 +46,23 @@
         .splash {
             position: absolute;
             top: 0px;
-            left: 62px;
-            width: 190px;
+               left: 50%;
+            transform: translate(-50%, 0);
+            width: 130px;
             z-index: 2;
-            /* optional cleanup */
-            /* remove unused vars/animations */
+            transform-origin: top center;
+            will-change: transform, opacity;
+        }
+        
+        @keyframes splashHalfCircle {
+            0% {
+                transform: scale(0);
+                filter: blur(6px);
+            }
+            100% {
+                transform: scale(1);
+                filter: blur(0);
+            }
         }
 
         @keyframes overlayFade {
@@ -156,15 +168,16 @@
     <div class="banner" id="banner">
         <div class="views-container">
             <div class="view">
-                <img src="Banner-320x320-1A.svg" alt="View 1 Background" style="width: 100%; height: 100%; object-fit: cover;">
+                <img src="Banner-Omg2-Bakgrund-320x320-A.svg" alt="View 1 Background" style="width: 100%; height: 100%; object-fit: cover;">
                 <div class="jpg-overlay">
                     <img src="Banner-320x320-1A.jpg" alt="Banner Overlay" style="width: 280px; height: auto;">
                 </div>
             </div>
             <div class="view">
-                <img src="Banner-320x320-1B.svg" alt="View 2 Background" style="width: 100%; height: 100%; object-fit: cover;">
-                <!-- replace container with direct SVG image -->
-                <img class="splash" src="SPLASH.svg" alt="Exclusive Preview" />
+                <img src="Banner-Omg2-Bakgrund-320x320-B.svg" alt="View 2 Background" style="width: 100%; height: 100%; object-fit: cover;">
+                <div class="splash">
+                    <img src="Splash-Banner1.svg" alt="Exclusive Preview" style="display:block; width:100%; height:auto;">
+                </div>
                 <div class="cta">
                     <img src="CTA-BANNER-320x320-1.svg" alt="Call to Action">
                 </div>
